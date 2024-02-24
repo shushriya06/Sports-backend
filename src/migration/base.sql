@@ -35,6 +35,20 @@ create table if not exists mydb.matches
     foreign key (tourId) references tours(id)
 );
 
+CREATE TABLE IF NOT EXISTS mydb.news
+(
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    sport_id INT,
+    tour_id INT,
+    match_id INT,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sport_id) REFERENCES sports(id),
+    FOREIGN KEY (tour_id) REFERENCES tours(id),
+    FOREIGN KEY (match_id) REFERENCES matches(id)
+);
+
 -- seed data
 insert ignore into mydb.sports (id, name) values (1, 'Cricket');
 insert ignore into mydb.sports (id, name) values (2, 'Football');
@@ -55,3 +69,18 @@ insert ignore into mydb.matches (name, tourId, format, startTime, endTime) value
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-12 10:00:00', '2023-06-12 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('IND vs WI', 3, 'ODI', '2023-06-14 10:00:00', '2023-06-14 23:00:00');
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('KER vs JFC', 4, 'soccer', '2022-04-09 18:00:00', '2022-04-09 23:00:00');
+
+-- Seed data for news related to matches
+INSERT IGNORE INTO mydb.news (title, description, match_id)
+VALUES 
+    ('High-scoring Thriller: GT vs RCB', 'Gujarat Titans vs Royal Challengers Bangalore match ends in a thrilling tie.', 1),
+    ('CSK Clinches Victory Against MI', 'Chennai Super Kings secures a convincing win against Mumbai Indians.', 2),
+    ('LSG''s Dominant Performance Against KXIP', 'Lucknow Super Giants display dominance against Kings XI Punjab.', 3),
+    ('RR Snatches Victory from SRH', 'Rajasthan Royals snatches victory from Sunrisers Hyderabad in a close encounter.', 4),
+    ('BLR vs BEN: Intense Soccer Showdown', 'Bengaluru FC clashes with Bengaluru United in a highly anticipated soccer match.', 3),
+    ('ATK Defeats MCFC in Thrilling Encounter', 'ATK Mohun Bagan secures a hard-fought victory against Mumbai City FC.', 2),
+    ('KER vs JFC Ends in Draw', 'Kerala Blasters and Jamshedpur FC play out a thrilling draw in their soccer match.', 1),
+    ('India Registers Convincing Win Against WI', 'India defeats West Indies in the first ODI of the series.', 1),
+    ('WI Bounces Back to Level Series Against IND', 'West Indies bounces back to level the series against India with a stunning victory.', 3),
+    ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 2);
+
