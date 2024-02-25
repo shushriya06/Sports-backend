@@ -7,6 +7,13 @@ const createNewsByMatch = async params=> {
 
 }
 
+const getNewsByMatch = async params => {
+    const statement = 'select * from news where match_id = ?';
+    const parameters = [ params.matchid ];
+    return await mysql.query(statement, parameters);
+}
+
 module.exports = {
-    createNewsByMatch: createNewsByMatch
+    createNewsByMatch: createNewsByMatch,
+	getNewsByMatch:getNewsByMatch
 }                                                                                                                                      
