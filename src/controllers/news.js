@@ -4,12 +4,14 @@ const Match = require('../models/match');
 
 const createNewsByMatch = async params => {
 	const tourData = await Match.getTourIDByMatchId({matchid: params.matchid});
-	if (!tourData || tourData[0].tourId) {
+	console.log("tour data", tourData);
+	if (!tourData || !tourData[0].tourId) {
         throw new Error('Tour id associated to the match not found.');
     }
 	params.tourid = tourData[0].tourId;
 	const sportData = await Tour.getSportsIDByTourId({tourid: params.tourid});
-	if (!sportData || sportData[0].sportId) {
+	console.log("sports data", sportData);
+	if (!sportData || !sportData[0].sportId) {
         throw new Error('Sport id associated to the tour corresponding to the match not found.');
     }
 	params.sportid = sportData[0].sportId;
@@ -18,7 +20,7 @@ const createNewsByMatch = async params => {
 
 const createNewsByTour = async params => {
 	const sportData = await Tour.getSportsIDByTourId({tourid: params.tourid});
-	if (!sportData || sportData[0].sportId) {
+	if (!sportData || !sportData[0].sportId) {
         throw new Error('Sport id associated to the tour not found.');
     }
 	params.sportid = sportData[0].sportId;

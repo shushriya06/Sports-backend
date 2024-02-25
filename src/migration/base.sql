@@ -35,7 +35,7 @@ create table if not exists mydb.matches
     foreign key (tourId) references tours(id)
 );
 
-CREATE TABLE IF NOT EXISTS mydb.news
+create table if not exists mydb.news
 (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
@@ -71,8 +71,8 @@ insert ignore into mydb.matches (name, tourId, format, startTime, endTime) value
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('KER vs JFC', 4, 'soccer', '2022-04-09 18:00:00', '2022-04-09 23:00:00');
 
 -- Seed data for news related to matches
-INSERT IGNORE INTO mydb.news (title, description, match_id)
-VALUES 
+insert ignore into mydb.news (title, description, match_id)
+values 
     ('High-scoring Thriller: GT vs RCB', 'Gujarat Titans vs Royal Challengers Bangalore match ends in a thrilling tie.', 1),
     ('CSK Clinches Victory Against MI', 'Chennai Super Kings secures a convincing win against Mumbai Indians.', 2),
     ('LSG''s Dominant Performance Against KXIP', 'Lucknow Super Giants display dominance against Kings XI Punjab.', 3),
@@ -85,9 +85,15 @@ VALUES
     ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 10);
 
 -- Seed data for news related to tours
-INSERT IGNORE INTO mydb.news (title, description, tour_id)
-VALUES 
+insert ignore into mydb.news (title, description, tour_id)
+values 
     ('Exciting Updates for IPL 2023', 'Stay tuned for exciting updates and news related to the Indian Premier League 2023.', 1),
     ('India Super League Highlights', 'Check out the highlights and latest news from the India Super League 2023.', 2),
     ('West Indies Tour Excitement', 'Get ready for the thrilling matches and updates from India''s tour of West Indies 2023.', 3),
-    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 4),
+    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 4);
+
+-- Seed data for news related to sports
+insert ignore into mydb.news (title, description, sport_id)
+values 
+    ('Exciting Cricket Season Ahead', 'Get ready for an action-packed cricket season with thrilling matches.', 1),
+    ('Football Championship Highlights', 'Recap of the thrilling moments from the recent football championship.', 2);
