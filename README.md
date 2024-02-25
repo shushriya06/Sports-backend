@@ -84,4 +84,4 @@ To fetch the news, GET method is used. The news can be fetched:
 		Example: `http://localhost:3000/news/sport?sportid=1`
 	* Returns all the news related to a particular sport id.
 
-Note- You can use `Sports-backend tests.postman_collection.json` file present in the root directory to test the APIs via postman.
+__Note-__ You can use `Sports-backend tests.postman_collection.json` file present in the root directory to test the APIs via postman.
