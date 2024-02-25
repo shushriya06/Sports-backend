@@ -71,26 +71,26 @@ insert ignore into mydb.matches (name, tourId, format, startTime, endTime) value
 insert ignore into mydb.matches (name, tourId, format, startTime, endTime) values ('KER vs JFC', 4, 'soccer', '2022-04-09 18:00:00', '2022-04-09 23:00:00');
 
 -- Seed data for news related to matches
-insert ignore into mydb.news (title, description, match_id)
+insert ignore into mydb.news (title, description, match_id, tour_id, sport_id)
 values 
-    ('High-scoring Thriller: GT vs RCB', 'Gujarat Titans vs Royal Challengers Bangalore match ends in a thrilling tie.', 1),
-    ('CSK Clinches Victory Against MI', 'Chennai Super Kings secures a convincing win against Mumbai Indians.', 2),
-    ('LSG''s Dominant Performance Against KXIP', 'Lucknow Super Giants display dominance against Kings XI Punjab.', 3),
-    ('RR Snatches Victory from SRH', 'Rajasthan Royals snatches victory from Sunrisers Hyderabad in a close encounter.', 4),
-    ('BLR vs BEN: Intense Soccer Showdown', 'Bengaluru FC clashes with Bengaluru United in a highly anticipated soccer match.', 5),
-    ('ATK Defeats MCFC in Thrilling Encounter', 'ATK Mohun Bagan secures a hard-fought victory against Mumbai City FC.', 6),
-    ('KER vs JFC Ends in Draw', 'Kerala Blasters and Jamshedpur FC play out a thrilling draw in their soccer match.', 7),
-    ('India Registers Convincing Win Against WI', 'India defeats West Indies in the first ODI of the series.', 8),
-    ('WI Bounces Back to Level Series Against IND', 'West Indies bounces back to level the series against India with a stunning victory.', 9),
-    ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 10);
+    ('High-scoring Thriller: GT vs RCB', 'Gujarat Titans vs Royal Challengers Bangalore match ends in a thrilling tie.', 1, 1, 1),
+    ('CSK Clinches Victory Against MI', 'Chennai Super Kings secures a convincing win against Mumbai Indians.', 2, 1, 1),
+    ('LSG''s Dominant Performance Against KXIP', 'Lucknow Super Giants display dominance against Kings XI Punjab.', 3, 1, 1),
+    ('RR Snatches Victory from SRH', 'Rajasthan Royals snatches victory from Sunrisers Hyderabad in a close encounter.', 4, 1, 1),
+    ('BLR vs BEN: Intense Soccer Showdown', 'Bengaluru FC clashes with Bengaluru United in a highly anticipated soccer match.', 5, 2, 2),
+    ('ATK Defeats MCFC in Thrilling Encounter', 'ATK Mohun Bagan secures a hard-fought victory against Mumbai City FC.', 6, 2, 2),
+    ('KER vs JFC Ends in Draw', 'Kerala Blasters and Jamshedpur FC play out a thrilling draw in their soccer match.', 7, 2, 2),
+    ('India Registers Convincing Win Against WI', 'India defeats West Indies in the first ODI of the series.', 8, 3, 1),
+    ('WI Bounces Back to Level Series Against IND', 'West Indies bounces back to level the series against India with a stunning victory.', 9, 3, 1),
+    ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 10, 3, 1);
 
 -- Seed data for news related to tours
-insert ignore into mydb.news (title, description, tour_id)
+insert ignore into mydb.news (title, description, tour_id, sport_id)
 values 
-    ('Exciting Updates for IPL 2023', 'Stay tuned for exciting updates and news related to the Indian Premier League 2023.', 1),
-    ('India Super League Highlights', 'Check out the highlights and latest news from the India Super League 2023.', 2),
-    ('West Indies Tour Excitement', 'Get ready for the thrilling matches and updates from India''s tour of West Indies 2023.', 3),
-    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 4);
+    ('Exciting Updates for IPL 2023', 'Stay tuned for exciting updates and news related to the Indian Premier League 2023.', 1, 1),
+    ('India Super League Highlights', 'Check out the highlights and latest news from the India Super League 2023.', 2, 2),
+    ('West Indies Tour Excitement', 'Get ready for the thrilling matches and updates from India''s tour of West Indies 2023.', 3, 1),
+    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 4, 2);
 
 -- Seed data for news related to sports
 insert ignore into mydb.news (title, description, sport_id)
