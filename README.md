@@ -25,13 +25,13 @@ Service will be available at `http://localhost:3000`
 ## Documentation
 __Problem 1:__
 Endpoint /tour/matches returns all the matches for a given tour name.
-The endpoint latency increases linearly with the number of tours. Modify the endpoint to increase the performance.
+The endpoint latency increases linearly with the number of tours. Modify the endpoint to increase the performance.<br/>
 __My Solution-__ To reduce the latency, I have opted for pagination. So, now the endpoint accepts `limit` and `page` as parameters and returns results as per them where `limit` is the number of responses that the service returns in one chunk and `page` is the chunk number of response that we want to get. The default value of `limit` is 10 and that of `page` is 1.
 Example: `http://localhost:3000/tour/matches?name=Indian Premier League, 2023&limit=2&page=1`
 
 __Problem 2:__
-Modify the endpoint /sport/tour/match to also return match's id, startTime and format
- __My Solution-__ To return these additional information, the sql query present in models corresponding to this endpoint present in `getAllSportsToursAndMatches` has been modified.
+Modify the endpoint /sport/tour/match to also return match's id, startTime and format.<br/>
+__My Solution-__ To return these additional information, the sql query present in models corresponding to this endpoint present in `getAllSportsToursAndMatches` has been modified.
 Example: `http://localhost:3000/sport/tour/match`. This now return match id, start time and format of the test as well along with other details.
 
 __Problem 3:__
@@ -49,14 +49,13 @@ News Model
 {
     title: string,
     description: string
-}
+}<br/>
 __My Solution-__ To cater this, the database schema has been modified and an additional table `news` has been added. This table will have match_id, tour_id, sport_id associated with each news(wherever applicable). And this table will be used to fetch the news by match id, tour id and sport id.
 
 To create a news, POST method is used. The news can be created:
 1. By match:
 	* `/news/create/match`
-		Example: http://localhost:3000/news/create/match
-		and the body is set to RAW(JSON) having value
+	* Example: http://localhost:3000/news/create/match and the body is set to RAW(JSON) having value
 		`{
 			"title":"RCB beats GT",
 			"description":"RCB beats GT in the semi-finals with Virat Kohli smashing an amazing century.",
@@ -65,8 +64,7 @@ To create a news, POST method is used. The news can be created:
 	* Creates a news as per the match id mentioned in the body. Also, updates the tour id & sport id associated with the match in `news` table.
 2. By tour:
 	* `/news/create/tour` 
-		Example: http://localhost:3000/news/create/tour
-		and the body is set to RAW(JSON) having value
+	* Example: http://localhost:3000/news/create/tour and the body is set to RAW(JSON) having value
 		`{
 			"title":"IPL 2023 begins",
 			"description":"IPL 2023 commences with inaugration ceremony at Narendra Modi Stadium, Ahmedabad.",
@@ -76,7 +74,7 @@ To create a news, POST method is used. The news can be created:
 
 To fetch the news, GET method is used. The news can be fetched:
 1. By match id:
-	*`/news/match`
+	* `/news/match`
 		Example: `http://localhost:3000/news/match?matchid=1`
 	* Return all the news related to a particular match id.
 2. By tour id:
