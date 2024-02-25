@@ -77,18 +77,17 @@ VALUES
     ('CSK Clinches Victory Against MI', 'Chennai Super Kings secures a convincing win against Mumbai Indians.', 2),
     ('LSG''s Dominant Performance Against KXIP', 'Lucknow Super Giants display dominance against Kings XI Punjab.', 3),
     ('RR Snatches Victory from SRH', 'Rajasthan Royals snatches victory from Sunrisers Hyderabad in a close encounter.', 4),
-    ('BLR vs BEN: Intense Soccer Showdown', 'Bengaluru FC clashes with Bengaluru United in a highly anticipated soccer match.', 3),
-    ('ATK Defeats MCFC in Thrilling Encounter', 'ATK Mohun Bagan secures a hard-fought victory against Mumbai City FC.', 2),
-    ('KER vs JFC Ends in Draw', 'Kerala Blasters and Jamshedpur FC play out a thrilling draw in their soccer match.', 1),
-    ('India Registers Convincing Win Against WI', 'India defeats West Indies in the first ODI of the series.', 1),
-    ('WI Bounces Back to Level Series Against IND', 'West Indies bounces back to level the series against India with a stunning victory.', 3),
-    ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 2);
+    ('BLR vs BEN: Intense Soccer Showdown', 'Bengaluru FC clashes with Bengaluru United in a highly anticipated soccer match.', 5),
+    ('ATK Defeats MCFC in Thrilling Encounter', 'ATK Mohun Bagan secures a hard-fought victory against Mumbai City FC.', 6),
+    ('KER vs JFC Ends in Draw', 'Kerala Blasters and Jamshedpur FC play out a thrilling draw in their soccer match.', 7),
+    ('India Registers Convincing Win Against WI', 'India defeats West Indies in the first ODI of the series.', 8),
+    ('WI Bounces Back to Level Series Against IND', 'West Indies bounces back to level the series against India with a stunning victory.', 9),
+    ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 10);
 
 -- Seed data for news related to tours
 INSERT IGNORE INTO mydb.news (title, description, tour_id)
 VALUES 
     ('Exciting Updates for IPL 2023', 'Stay tuned for exciting updates and news related to the Indian Premier League 2023.', 1),
     ('India Super League Highlights', 'Check out the highlights and latest news from the India Super League 2023.', 2),
-    ('West Indies Tour Excitement', 'Get ready for the thrilling matches and updates from India''s tour of West Indies 2023.', 2),
-    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 1),
-    ('NBA Finals Coverage', 'Stay updated with the latest news and highlights from the NBA Finals 2023.', 2);
+    ('West Indies Tour Excitement', 'Get ready for the thrilling matches and updates from India''s tour of West Indies 2023.', 3),
+    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 4),
