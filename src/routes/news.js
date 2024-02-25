@@ -38,4 +38,14 @@ module.exports = function(app) {
             return next(err);
         }
     });
+
+	app.route('/news/sport').get(async (req, res, next) => {
+        try {
+            let params = req.query;
+            let result = await News.getNewsBySport(params);
+            return res.json(result);
+        } catch (err) {
+            return next(err);
+        }
+    });
 }
