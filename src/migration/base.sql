@@ -84,3 +84,11 @@ VALUES
     ('WI Bounces Back to Level Series Against IND', 'West Indies bounces back to level the series against India with a stunning victory.', 3),
     ('Decisive Victory for India in Final ODI', 'India clinches the series with a decisive victory against West Indies in the final ODI.', 2);
 
+-- Seed data for news related to tours
+INSERT IGNORE INTO mydb.news (title, description, tour_id)
+VALUES 
+    ('Exciting Updates for IPL 2023', 'Stay tuned for exciting updates and news related to the Indian Premier League 2023.', 1),
+    ('India Super League Highlights', 'Check out the highlights and latest news from the India Super League 2023.', 2),
+    ('West Indies Tour Excitement', 'Get ready for the thrilling matches and updates from India''s tour of West Indies 2023.', 2),
+    ('Recap of English Premier League 2022', 'Recap of the exciting matches and highlights from the English Premier League 2022 season.', 1),
+    ('NBA Finals Coverage', 'Stay updated with the latest news and highlights from the NBA Finals 2023.', 2);
