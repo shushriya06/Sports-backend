@@ -12,29 +12,29 @@ A backend application which has the following features:
 How to run this?
 
 ### Prequisites : 
-1. Docker(Docker desktop for [mac with apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64) | [mac with intel chilp](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64) | [mac with windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe) ) and docker-compose.
+Docker(Docker desktop for [mac with apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64) | [mac with intel chilp](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64) | [mac with windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe) ) and docker-compose.
 
 ### Steps :
 
 1. Clone this repository with command `git clone https://github.com/shushriya06/Sports-backend.git`
 2. Change working directory to Sports-Backend using `cd Sports-Backend`
-3. To start the service, run the following command: `docker-compose up -d`
+3. To start the service, run the following command from this repository: `docker-compose up -d`
 
 Service will be available at `http://localhost:3000`
 
 ## Documentation
-Problem 1:
+__Problem 1:__
 Endpoint /tour/matches returns all the matches for a given tour name.
 The endpoint latency increases linearly with the number of tours. Modify the endpoint to increase the performance.
--To reduce the latency, I have opted for pagination. So, now the endpoint accepts `limit` and `page` as parameters and returns results as per them where `limit` is the number of responses that the service returns in one chunk and `page` is the chunk number of response that we want to get. The default value of `limit` is 10 and that of `page` is 1.
+__My Solution-__ To reduce the latency, I have opted for pagination. So, now the endpoint accepts `limit` and `page` as parameters and returns results as per them where `limit` is the number of responses that the service returns in one chunk and `page` is the chunk number of response that we want to get. The default value of `limit` is 10 and that of `page` is 1.
 Example: `http://localhost:3000/tour/matches?name=Indian Premier League, 2023&limit=2&page=1`
 
-Problem 2: 
+__Problem 2:__
 Modify the endpoint /sport/tour/match to also return match's id, startTime and format
-- To return these additional information, the sql query present in models corresponding to this endpoint present in `getAllSportsToursAndMatches` has been modified.
+ __My Solution-__ To return these additional information, the sql query present in models corresponding to this endpoint present in `getAllSportsToursAndMatches` has been modified.
 Example: `http://localhost:3000/sport/tour/match`. This now return match id, start time and format of the test as well along with other details.
 
-Problem 3:
+__Problem 3:__
 Requirement: News Support for Matches and Tours
 Functional Requirements:
     1. News can be created for a match or a tour.
@@ -50,10 +50,10 @@ News Model
     title: string,
     description: string
 }
-- To cater this, the database schema has been modified and an additional table `news` has been added. This table will have match_id, tour_id, sport_id associated with each news(wherever applicable). And this table will be used to fetch the news by match id, tour id and sport id.
+__My Solution-__ To cater this, the database schema has been modified and an additional table `news` has been added. This table will have match_id, tour_id, sport_id associated with each news(wherever applicable). And this table will be used to fetch the news by match id, tour id and sport id.
 
 To create a news, POST method is used. The news can be created:
-	1.By match:
+1. By match:
 	* `/news/create/match`
 		Example: http://localhost:3000/news/create/match
 		and the body is set to RAW(JSON) having value
@@ -63,7 +63,7 @@ To create a news, POST method is used. The news can be created:
 			"matchid":1
 		}`
 	* Creates a news as per the match id mentioned in the body. Also, updates the tour id & sport id associated with the match in `news` table.
-	2. By tour:
+2. By tour:
 	* `/news/create/tour` 
 		Example: http://localhost:3000/news/create/tour
 		and the body is set to RAW(JSON) having value
@@ -75,15 +75,15 @@ To create a news, POST method is used. The news can be created:
 	* Creates a news as per the tour id mentioned in the body. Also, updates the sport id associated with the tour in `news` table.
 
 To fetch the news, GET method is used. The news can be fetched:
-	1. By match id:
+1. By match id:
 	*`/news/match`
 		Example: `http://localhost:3000/news/match?matchid=1`
 	* Return all the news related to a particular match id.
-	2. By tour id:
+2. By tour id:
 	* `/news/tour`
 		Example: `http://localhost:3000/news/tour?tourid=1`
 	* Returns all the news related to a particular tour id.
-	3. By sport id:
+3. By sport id:
 	* `/news/sport`
 		Example: `http://localhost:3000/news/sport?sportid=1`
 	* Returns all the news related to a particular sport id.
