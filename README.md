@@ -3,13 +3,11 @@
 A backend application which has the following features:
 1) An endpoint which return all the matches for a given tour name in paginated fashion.
 2) An endpoint which return all the matches for a given sport's tour along with its format & match's start time.
-3) An endpoint to create a news for a tour/match.
+3) An endpoint to create a news for a tour/match.<br/>
 	a) An endpoint to fetch all the news associated with a match id.
 	b) An endpoint to fetch all the news associated with a tour id.
 	c) An endpoint to fetch all the news associated with a sport id.
 ## Setup
-
-How to run this?
 
 ### Prequisites : 
 Docker(Docker desktop for [mac with apple silicon](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64) | [mac with intel chilp](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-amd64) | [mac with windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe) ) and docker-compose.
@@ -24,32 +22,32 @@ Service will be available at `http://localhost:3000`
 
 ## Documentation
 __Problem 1:__
-Endpoint /tour/matches returns all the matches for a given tour name.
+Endpoint `/tour/matches` returns all the matches for a given tour name.
 The endpoint latency increases linearly with the number of tours. Modify the endpoint to increase the performance.<br/>
-__My Solution-__ To reduce the latency, I have opted for pagination. So, now the endpoint accepts `limit` and `page` as parameters and returns results as per them where `limit` is the number of responses that the service returns in one chunk and `page` is the chunk number of response that we want to get. The default value of `limit` is 10 and that of `page` is 1.
+__My Solution-__ To reduce the latency, I have opted for pagination. So, now the endpoint accepts `limit` and `page` as parameters and returns response as per them. Here `limit` is the number of responses that the service returns in one chunk and `page` is the chunk number of response that we want to get. The default value of `limit` is 10 and that of `page` is 1.
 Example: `http://localhost:3000/tour/matches?name=Indian Premier League, 2023&limit=2&page=1`
 
 __Problem 2:__
-Modify the endpoint /sport/tour/match to also return match's id, startTime and format.<br/>
+Modify the endpoint `/sport/tour/match` to also return match's id, startTime and format.<br/>
 __My Solution-__ To return these additional information, the sql query present in models corresponding to this endpoint present in `getAllSportsToursAndMatches` has been modified.
 Example: `http://localhost:3000/sport/tour/match`. This now return match id, start time and format of the test as well along with other details.
 
 __Problem 3:__
-Requirement: News Support for Matches and Tours
-Functional Requirements:
-    1. News can be created for a match or a tour.
-    2. Each news created for a match also belongs to the corresponding tour.
-    3. Each news created for a tour also belongs to the corresponding sport.
-Technical Requirements:
-    1. Create an endpoint to create news.
-    2. Create an endpoint to fetch news by match id
-    3. Create an endpoint to fetch news by tour id
-    4. Create an endpoint to fetch news by sport id
-News Model
+Requirement: News Support for Matches and Tours<br/>
+Functional Requirements:<br/>
+    1. News can be created for a match or a tour.<br/>
+    2. Each news created for a match also belongs to the corresponding tour.<br/>
+    3. Each news created for a tour also belongs to the corresponding sport.<br/>
+Technical Requirements:<br/>
+    1. Create an endpoint to create news<br/>
+    2. Create an endpoint to fetch news by match id<br/>
+    3. Create an endpoint to fetch news by tour id<br/>
+    4. Create an endpoint to fetch news by sport id<br/>
+`News Model
 {
     title: string,
     description: string
-}<br/>
+}`<br/>
 __My Solution-__ To cater this, the database schema has been modified and an additional table `news` has been added. This table will have match_id, tour_id, sport_id associated with each news(wherever applicable). And this table will be used to fetch the news by match id, tour id and sport id.
 
 To create a news, POST method is used. The news can be created:
