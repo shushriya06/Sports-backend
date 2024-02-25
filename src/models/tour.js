@@ -6,13 +6,20 @@ const getAllTours = async () => {
     return await mysql.query(statement, parameters);
 }
 
-const getMatchesByTourName = async params => {
-    const statement = 'select * from matches left join tours on matches.tourId = tours.id where tours.name = ?';
-    const parameters = [ params.name ];
+const getMatchesByTourName = async (params, skip, limit) => {
+    const statement = 'SELECT * FROM matches LEFT JOIN tours ON matches.tourId = tours.id WHERE tours.name = ? LIMIT ? OFFSET ?';
+    const parameters = [params.name, limit, skip];
+    return await mysql.query(statement, parameters);
+}
+
+const getSportsIDByTourId = async (params) => {
+    const statement = 'SELECT sportId FROM tours WHERE id=?';
+    const parameters = [params.tourid];
     return await mysql.query(statement, parameters);
 }
 
 module.exports = {
     getAllTours: getAllTours,
-    getMatchesByTourName: getMatchesByTourName
+    getMatchesByTourName: getMatchesByTourName,
+	getSportsIDByTourId: getSportsIDByTourId
 }

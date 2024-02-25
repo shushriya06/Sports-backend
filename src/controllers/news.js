@@ -1,10 +1,18 @@
 const News = require('../models/news');
+const Tour = require('../models/tour');
+const Match = require('../models/match');
 
 const createNewsByMatch = async params => {
+	const tourData = await Match.getTourIDByMatchId({matchid: params.matchid});
+	params.tourid = tourData[0].tourId;
+	const sportData = await Tour.getSportsIDByTourId({tourid: params.tourid});
+	params.sportid = sportData[0].sportId;
     return await News.createNewsByMatch(params);
 }
 
 const createNewsByTour = async params => {
+	const sportData = await Tour.getSportsIDByTourId({tourid: params.tourid});
+	params.sportid = sportData[0].sportId;
     return await News.createNewsByTour(params);
 }
 
