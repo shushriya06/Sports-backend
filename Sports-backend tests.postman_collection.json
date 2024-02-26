@@ -10,7 +10,33 @@
 			"name": "Problem 1",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tour/matches?name=Indian Premier League, 2023&limit=2&page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tour",
+						"matches"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Indian Premier League, 2023"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -18,23 +44,80 @@
 			"name": "Problem 2",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/sport/tour/match",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sport",
+						"tour",
+						"match"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Create news by match",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"RCB beats GT\",\n    \"description\":\"RCB beats GT in the semi-finals with Virat Kohli smashing an amazing century.\",\n    \"matchid\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/news/create/match",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"create",
+						"match"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Create news by tour",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"IPL 2023 begins\",\n    \"description\":\"IPL 2023 commences with inaugration ceremony at Narendra Modi Stadium, Ahmedabad.\",\n    \"tourid\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/news/create/tour",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"create",
+						"tour"
+					]
+				}
 			},
 			"response": []
 		},
@@ -42,7 +125,25 @@
 			"name": "Fetch news by match id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news/match?matchid=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"match"
+					],
+					"query": [
+						{
+							"key": "matchid",
+							"value": "1"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -50,7 +151,25 @@
 			"name": "Fetch news by tour id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news/tour?tourid=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"tour"
+					],
+					"query": [
+						{
+							"key": "tourid",
+							"value": "1"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -58,7 +177,25 @@
 			"name": "Fetch news by sport id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/news/sport?sportid=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"news",
+						"sport"
+					],
+					"query": [
+						{
+							"key": "sportid",
+							"value": "1"
+						}
+					]
+				}
 			},
 			"response": []
 		}
